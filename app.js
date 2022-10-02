@@ -39,5 +39,10 @@ rl.on('close', () => {
   for (const [key,value] of prefectureDataMap){ //pythonでいうin節のようなのをjsだとfor ( 配列 of Map) で出来る模様(for-of構文)
     value.change = value.popu15 / value.popu10
   }
-  console.log(prefectureDataMap);
+  // 各perferctureDatamapの変化率からソート
+  const rankingArray = Array.from(prefectureDataMap).sort((pair1, pair2) => {
+    //無名関数でソート用の比較関数を渡して計算 ここでは変化率の差を比較関数にしている
+    return pair2[1].change - pair1[1].change;
+  });
+  console.log(rankingArray);
 });
