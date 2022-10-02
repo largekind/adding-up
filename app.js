@@ -44,5 +44,9 @@ rl.on('close', () => {
     //無名関数でソート用の比較関数を渡して計算 ここでは変化率の差を比較関数にしている
     return pair2[1].change - pair1[1].change;
   });
-  console.log(rankingArray);
+  // 出力用に整理。各要素に対して処理を行うmap関数を使用する
+  const rankingStrings = rankingArray.map(([key, value]) => {
+    return `${key}: ${value.popu10}=>${value.popu15} 変化率: ${value.change}`;
+  });
+  console.log(rankingStrings);
 });
